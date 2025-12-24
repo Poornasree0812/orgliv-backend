@@ -20,15 +20,23 @@ const packingRoutes = require("./src/routes/packingRoutes");
 const app = express();
 
 // -------------------- MIDDLEWARE --------------------
+
+
 app.use(
   cors({
     origin: [
       "http://localhost:3000",
       "https://frolicking-manatee-8887d2.netlify.app"
     ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
+
+// 👇 VERY IMPORTANT (preflight support)
+app.options("*", cors());
+
 
 
 app.use(express.json());
