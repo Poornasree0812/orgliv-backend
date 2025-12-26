@@ -36,7 +36,7 @@ app.use(
 // 👇 VERY IMPORTANT (preflight support)
 app.options("*", cors());
 
-
+connectDB();
 
 app.use(express.json());
 
